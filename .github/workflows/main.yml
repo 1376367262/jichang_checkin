@@ -2,8 +2,8 @@ name: "Common airport Checkin"
 
 on:
   schedule:
-    - cron: "1 0 * * *"  # scheduled at 06:00 (UTC+8) everyday
-  workflow_dispatch:
+    - cron: '1 0 * * *'  # 每天 00:00 UTC 执行，调整为你需要的时间
+  workflow_dispatch:  # 允许手动触发
 
 env:
   RUN_ENV: 'prod'
