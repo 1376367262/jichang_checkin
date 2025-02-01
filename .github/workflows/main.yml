@@ -2,7 +2,7 @@ name: "Common airport Checkin"
 
 on:
   schedule:
-    - cron: '1 0 * * *'  # 每天 00:00 UTC 执行，调整为你需要的时间
+    - cron: '1 0 * * *'  # 每天 00:01 UTC 执行，调整为你需要的时间
   workflow_dispatch:  # 允许手动触发
 
 env:
@@ -11,19 +11,17 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # if: github.ref == 'refs/heads/master'
 
     steps:
       - name: Checkout master
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          # ref: master
 
       - name: Set up python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v2
         with:
-          python-version: 3.10.16
+          python-version: 3.10.16  # 更新为可用的版本
 
       - name: Random sleep
         if: github.event_name == 'schedule'
@@ -33,6 +31,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
       - name: Run sign
         env:
           URL: ${{ secrets.URL }}
