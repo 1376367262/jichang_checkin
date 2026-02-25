@@ -1,6 +1,6 @@
 name: "Common airport Checkin"
 
-于:
+on:
   schedule:
     - cron: "0 16 * * *"  # scheduled at 06:00 (UTC+8) everyday
   workflow_dispatch:
