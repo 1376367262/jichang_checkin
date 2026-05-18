@@ -15,15 +15,15 @@ jobs:
 
     steps:
       - name: Checkout master
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           # ref: master
 
       - name: Set up python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
-          python-version: 3.14.3
+          python-version: '3.13'
 
       - name: Random sleep
         if: github.event_name == 'schedule'
